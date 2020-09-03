@@ -102,22 +102,34 @@ let densidade =(area, populacao)=> populacao/area
       Durante este mesmo loop, elimine a propriedade 'sigla' dos objetos.
 
 */
-for(let i = 1; i < estadosNe.length; i++ ){
+for(let i = 0; i < estadosNe.length; i++ ){
  
-   let a = densidade(estado+i.area,estado+i.populacao)
-   //estados+i['densidade demográfica'] = a
-   console.log(a)
+ estadosNe[i]['densidade demográfica'] = densidade(estadosNe[i].area,estadosNe[i].populacao)
+   delete estadosNe[i].sigla
+ 
 }
 
 /* 4) Escreva uma arrow function que receba um objeto. Na função, use for..in
       para extrair as propriedades e seus valores e exibi-los com console.log().
 
 */
+let extrair =(estado)=> {
+   for(let atrib in estado)
+   console.log(` Atributo:${atrib}; valor: ${estado[atrib]} `)
+}
 
 /* 5) Percorra o vetor estadosNe usando for..of. Para cada objeto no vetor,
-      invoque a função escrita em 4) para exibi-lo.
+      invoque a função escrita em 4) para exibi-lo.*/
+
+for(let val of estadosNe){
+   extrair(val)
+   console.log('----------')
+}
+
+
 
 /*
+
    6)
       a) Declare um vetor vazio.
       b) Insira no vetor criado no item a) apenas o nome de cada Estado, conforme
@@ -129,3 +141,24 @@ for(let i = 1; i < estadosNe.length; i++ ){
          já existentes, e assim por diante.
 
 */
+let vet = []
+
+vet.push(estadosNe[0].nome)//sergipe 
+
+vet.unshift(estadosNe[1].nome)//alagoas
+
+vet.splice(1,0, estadosNe[2].nome)//Rio grande do norte
+
+vet.splice(1,0, estadosNe[3].nome)//paraiba
+
+vet.splice(2,0, estadosNe[4].nome)//pernambuco
+
+vet.splice(1,0, estadosNe[5].nome)//ceará
+
+vet.splice(4,0, estadosNe[6].nome)//piaui
+
+vet.splice(2,0, estadosNe[7].nome)//Maranhão
+
+vet.splice(1,0, estadosNe[8].nome)//bahia
+
+console.log(vet)
