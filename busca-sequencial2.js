@@ -27,3 +27,11 @@ let pos = buscaSequencial(listaNomes, 10000,(obj, valor)=> obj.frequency_total >
 //Exibe o objeto da posição encontrada e depois a própria posição
 console.log(listaNomes[pos],pos)
 console.timeEnd('Nome com mais de 10000')
+
+console.log('---------------------------------')
+
+console.time('COUVE')
+//console.log(buscaSequencial(listaNomes, 'COUVE', comparaNome))
+console.log(buscaSequencial(listaNomes, 'COUVE',(obj, nome)=>obj.first_name === nome ))
+console.timeEnd('COUVE')
+

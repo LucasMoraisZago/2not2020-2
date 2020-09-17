@@ -6,12 +6,14 @@
     O percurso no vetor é feito tantas vezes quando necessário, até
     que nenhuma troca seja efetuada no percurso.
 */
+
 function bubbleSort(vetor) {
     let passadas = 0, comparacoes = 0, totalTrocas = 0
     let trocas
     do {
         passadas++
         trocas = 0
+ 
         // Percurso do vetor até a PENÚLTIMA POSIÇÃO (length - 2)
         for(let i = 0; i <= vetor.length - 2; i++) {
             comparacoes++
