@@ -8,7 +8,7 @@ function buscaBinaria(lista, valorBusca) {
     while(fim >= inicio) {
         // Math.floor(): retira as casas decimais de um número
         let meio = Math.floor((fim + inicio) / 2)
-        
+
         // Verifica se o valor na posição média é o valor de busca
         if(valorBusca === lista[meio]) {
             comp++
@@ -24,8 +24,11 @@ function buscaBinaria(lista, valorBusca) {
         }
     }
     return -1       // Valor não encontrado
+
 }
+
 let vetorNomes = require('./dados/vetor-nomes')
+
 console.time('FAUSTO')
 console.log(buscaBinaria(vetorNomes, 'FAUSTO'))
 console.timeEnd('FAUSTO')
@@ -34,16 +37,15 @@ console.log('Comparações: ', comp)
 console.log('--------------------------------------------')
 
 comp = 0
-console.time('ZOZIMO')
-console.log(buscaBinaria(vetorNomes, 'ZOZIMO'))
-console.timeEnd('ZOZIMO')
+console.time('ZYON')
+console.log(buscaBinaria(vetorNomes, 'ZYON'))
+console.timeEnd('ZYON')
 console.log('Comparações: ', comp)
 
 console.log('--------------------------------------------')
 
 comp = 0
-console.time('LUCAS')
-console.log(buscaBinaria(vetorNomes, 'LUCAS'))
-console.timeEnd('LUCAS')
+console.time('INSTAGRAMILDA')
+console.log(buscaBinaria(vetorNomes, 'INSTAGRAMILDA'))
+console.timeEnd('INSTAGRAMILDA')
 console.log('Comparações: ', comp)
-

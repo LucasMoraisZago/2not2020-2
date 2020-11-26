@@ -33,9 +33,11 @@ function selectionSort(vetor) {
 
 /*
 const nums = [56, 78, 44, 23, 99, 14, 60, 37, 6, 82, 31, 65]
+
 console.time('nums')
 selectionSort(nums)
 console.timeEnd('nums')
+
 console.log(nums)
 */
 

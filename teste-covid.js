@@ -38,21 +38,25 @@ console.log({passadas, comparacoes, trocas})
 */
 
 
-const candidatos = require('./dados/candidatos-2018')
-console.time('Teste candidatos')
+const covid19 = require('./dados/covid-19')
+console.time('Teste COVID-19')
 //quickSort(candidatos, (a, b) => a.NM_CANDIDATO > b.NM_CANDIDATO)
 
-quickSort(candidatos, (a, b) => {
+quickSort(covid19, (a, b) => {
     // Ordenação considerando primeiro NR_CANDIDATO e depois NM_CANDIDATO
-    if(a.NR_CANDIDATO == b.NR_CANDIDATO) {
-        if(a.NM_CANDIDATO > b.NM_CANDIDATO) return true
+    if(a.date == b.date) {
+        if(a.state == b.state) {
+            if(a.city > b.city) return true
+            else return false
+        }
+        else if (a.state > b.state) return true
         else return false
     }
-    else if(a.NR_CANDIDATO > b.NR_CANDIDATO) return true
+    else if(a.date > b.date) return true
     else return false
 })
 
-console.timeEnd('Teste candidatos')
-console.log(candidatos)
+console.timeEnd('Teste COVID-19')
+console.log(covid19)
 console.log('Memória usada (MB):', process.memoryUsage().heapUsed / 1024 / 1024)
 console.log({passadas, comparacoes, trocas})

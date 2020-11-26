@@ -1,5 +1,11 @@
 let comparacoes = 0, divisoes = 0, juncoes = 0
-function mergeSort(vetor) {
+
+// fnComp -> função de comparação
+// Parâmetros: dois valores a serem comparados
+// Retorno:
+// - true: se primeiro valor for MAIOR que segundo
+// - false: caso contrário
+function mergeSort(vetor, fnComp) {
 
     // Recebe dois vetores JÁ ORDENADOS PREVIAMENTE e os mescla
     // em um único vetor, também ORDENADO
@@ -8,7 +14,8 @@ function mergeSort(vetor) {
 
         while(posEsq < vetEsq.length && posDir < vetDir.length) {
             comparacoes++
-            if(vetEsq[posEsq] < vetDir[posDir]) {
+            //if(vetEsq[posEsq] < vetDir[posDir]) {
+            if(fnComp(vetDir[posDir], vetEsq[posEsq])) { // Parâmetros invertidos
                 vetRes.push(vetEsq[posEsq])
                 posEsq++
             }
@@ -38,8 +45,8 @@ function mergeSort(vetor) {
         let vetDir = vetor.slice(meio)
         divisoes++
         //console.log('ANTES:', {vetor, vetEsq, vetDir})
-        vetEsq = mergeSort(vetEsq)
-        vetDir = mergeSort(vetDir)
+        vetEsq = mergeSort(vetEsq, fnComp)
+        vetDir = mergeSort(vetDir, fnComp)
         //console.log('DEPOIS:', {vetEsq, vetDir})
         juncoes++
         return mesclarVetores(vetEsq, vetDir)        
@@ -52,10 +59,32 @@ function mergeSort(vetor) {
 
 // console.log(mergeSort([33, 98, 77, 49, 2, 26, 93, 51, 14, 64]))
 
+/*
 const nomes = require('./dados/100-mil-nomes')
 console.time('Teste nomes')
 console.log(mergeSort(nomes))
 console.timeEnd('Teste nomes')
+let memoria = process.memoryUsage().heapUsed / 1024 / 1024
+console.log('Memória usada (MB):', memoria)
+console.log({comparacoes, divisoes, juncoes})
+*/
+
+const covid19 = require('./dados/covid-19')
+console.time('Teste COVID-19')
+console.log(mergeSort(covid19, (a, b) => {
+    // Ordenação considerando primeiro NR_CANDIDATO e depois NM_CANDIDATO
+    if(a.date == b.date) {
+        if(a.state == b.state) {
+            if(a.city > b.city) return true
+            else return false
+        }
+        else if (a.state > b.state) return true
+        else return false
+    }
+    else if(a.date > b.date) return true
+    else return false
+}))
+console.timeEnd('Teste COVID-19')
 let memoria = process.memoryUsage().heapUsed / 1024 / 1024
 console.log('Memória usada (MB):', memoria)
 console.log({comparacoes, divisoes, juncoes})
